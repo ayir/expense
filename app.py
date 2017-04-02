@@ -1,6 +1,6 @@
 from flask import Flask, redirect, render_template, request, url_for, flash, session
 from db import db
-
+import os
 
 app = Flask(__name__)
 app.secret_key = 'F12Zr47j\3yX R~X@H!jmM]Lwf/,?KT'
@@ -157,7 +157,6 @@ def category():
 
 
 if __name__ == '__main__':
-    app.run(
-        host="0.0.0.0",
-        port=int("5000")
-    )
+    app.debug = True
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)

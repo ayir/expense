@@ -1,13 +1,18 @@
 import psycopg2 as pg
+import os
+import urllib.parse as urlparse
+
+
+url = urlparse.urlparse(os.environ['DATABASE_URL'])
 
 
 def get_connection():
     conn = pg.connect(
-        database='riya',
-        user='postgres',
-        password='bitsat',
-        host='localhost',
-        port=5432)
+        database=url.path[1:],
+        user=url.username,
+        password=url.password,
+        host=url.hostname,
+        port=url.port)
     return conn
 
 

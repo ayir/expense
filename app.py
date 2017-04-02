@@ -1,6 +1,5 @@
 from flask import Flask, redirect, render_template, request, url_for, flash, session
 from db import db
-from pymsgbox import *
 
 
 app = Flask(__name__)
@@ -47,7 +46,8 @@ def login():
                 data=data,
                 data_chart=graph_data)
         else:
-            alert(text='INVALID INPUT', title='ERROR', button='OK')
+            error = 'Invalid username or password \
+            Please try again!'
             return render_template('login.html', error=error, session=session)
     return render_template('login.html')
 
@@ -65,10 +65,10 @@ def register():
                                 
                                
     if (data == 1):
-        alert(text='USER ALREADY EXISTS/INVALID INPUT', title='ERROR', button='OK')
+        flash('ERROR! PLEASE ENTER SOMETHING OR CHECK YOUR USER')
         return redirect(url_for('registration'))
     print (data)
-    alert(text='REGISTRATION SUCCESSFUL', title='SUCCESSFUL', button='OK')
+    flash('REGISTRATION SUCCESSFUL')
     return redirect(url_for('registration'))
 
 
@@ -129,7 +129,7 @@ def category():
                                              request.form['field8'],
                                              request.form['field9'])
     if (data_category == 1):
-        alert(text='CATEGORY ALREADY EXISTS/INPUT MISMATCH', title='ERROR', button='OK')
+        flash('ERROR! CATAGORY ALREADY SATISFIED OR SOMETHING WENT WRONG PLEASE CHECK NEXT MESSAGE TO CONFIRM')
     else:
         flash(data_category)
         user_data = session['name']

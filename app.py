@@ -1,12 +1,10 @@
 from flask import Flask, redirect, render_template, request, url_for, flash, session
 from db import db
 from pymsgbox import *
-from flask.ext.sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-db = SQLAlchemy(app)
-
+app.secret_key = 'F12Zr47j\3yX R~X@H!jmM]Lwf/,?KT'
 
 
 @app.route('/')
@@ -159,4 +157,7 @@ def category():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(
+        host="0.0.0.0",
+        port=int("5000")
+    )

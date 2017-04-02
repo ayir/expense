@@ -1,9 +1,12 @@
 from flask import Flask, redirect, render_template, request, url_for, flash, session
 from db import db
 from pymsgbox import *
+from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.secret_key = 'F12Zr47j\3yX R~X@H!jmM]Lwf/,?KT'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+db = SQLAlchemy(app)
+
 
 
 @app.route('/')

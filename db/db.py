@@ -51,6 +51,12 @@ def insert_categories(USER, CATEGORIES, PRICE, DESCRIPTION):
 
 
 def category_alreadyexits(USER, CATEGORIES, PRICE, DESCRIPTION):
+    if not CATEGORIES:
+        return 1
+    elif not PRICE:
+        return 1
+    elif not DESCRIPTION:
+        return 1
     connection = get_connection()
     cursor = connection.cursor()
     query = """SELECT USERID from USER_DATA where CATEGORIES='%s';"""

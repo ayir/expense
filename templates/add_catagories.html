@@ -81,6 +81,16 @@
                
 
                     </p>
+                    <p class="mbr-section-lead lead"><font style="color:blue; font-size: '18'" ><b>{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% block body %}{% endblock %}</b></font></p>
                     
                 </div>
             </div>

@@ -129,7 +129,7 @@ def category():
                                              request.form['field8'],
                                              request.form['field9'])
     if (data_category == 1):
-        flash('ERROR! CATAGORY ALREADY SATISFIED OR SOMETHING WENT WRONG PLEASE CHECK NEXT MESSAGE TO CONFIRM')
+        flash('CATEGORY ALREADY PRESENT/INVALID INPUT')
     else:
         flash(data_category)
         user_data = session['name']

@@ -64,6 +64,8 @@
         <div class="container">
             <div class="row">
                 <div class="mbr-section col-md-10 col-md-offset-1 text-xs-center">
+                <p class="mbr-section-lead lead">{% if error %}
+Error:{{ error }} {% endif %}</p>
 <form action = "" method = post style="text-align: center; color = red">
 <p><font style="color: white"><strong> Username : </strong></font><input type = text name = username placeholder = "Username" size="35"></p>
 <p><font style="color: white"><strong> Password : </strong></font><input type = password name = password placeholder = "Password" size="35"></p></font>
